@@ -11,5 +11,5 @@ $ docker-compose build
 Access the container's Bash shell by running the following command
 
 ```
-$ docker-compose run snakemake-tutorial bash
+$ docker-compose run snakemake-2 bash
 ```
