@@ -3,7 +3,7 @@ services:
   snakemake-2:
     build:
       context: .
-      dockerfile: Dockerfile.df
+      dockerfile: Dockerfile
     volumes:
       - ./snakemake-tutorial:/snakemake_project
       - ./snakemake-tutorial/data:/snakemake_project/data
