@@ -11,5 +11,17 @@ $ docker-compose build
 Access the container's Bash shell by running the following command
 
 ```
-$ docker-compose run snakemake-tutorial bash
+$ docker-compose run snakemake-2 bash
+```
+
+Initialise conda
+
+```bash
+$ conda init bash
+$ source ~/.bashrc
+```
+
+Activate the environment
+```bash
+$ conda activate snakemake-tutorial
 ```

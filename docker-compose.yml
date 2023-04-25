@@ -3,9 +3,11 @@ services:
   snakemake-2:
     build:
       context: .
-      dockerfile: Dockerfile.df
+      dockerfile: Dockerfile
     volumes:
       - ./snakemake-tutorial:/snakemake_project
       - ./snakemake-tutorial/data:/snakemake_project/data
-      - ./snakemake-tutorial/data/samples:/snakemake_project/data/samples
+      - ./snakemake-tutorial/scripts:/snakemake_project/scripts
+      - ./snakemake-tutorial/outputs:/snakemake_project/outputs
+      - ./snakemake-tutorial/tools:/snakemake_project/tools
     command: /bin/bash

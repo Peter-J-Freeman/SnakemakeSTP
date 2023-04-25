@@ -1,0 +1,33 @@
+rule bwa_map:
+    input:
+        "data/genome/hg38_v0_Homo_sapiens_assembly38.fasta",
+        "data/samples/{sample}.fastq"
+    output:
+        temp("outputs/mapped_reads/{sample}.bam")
+    params:
+        rg=r"@RG\tID:{sample}\tSM:{sample}"
+    threads: 8
+    shell:
+        "(bwa mem -R '{params.rg}' -t {threads} {input} | "
+        "samtools view -Sb - > {output}) 2> {log}"
+
+rule samtools_sort:
+    input:
+        "outputs/mapped_reads/{sample}.bam"
+    output:
+        protected("outputs/sorted_reads/{sample}.bam")
+    shell:
+        "samtools sort -T sorted_reads/{wildcards.sample} "
+        "-O bam {input} > {output}"
+        # The wildcard "sample" is effectively a regex search and
+        # can be configured e.g. to capture sample in sample.bam
+        # wildcard_constraints:
+        #     sample = r"\w+"
+
+rule samtools_index:
+    input:
+        "outputs/sorted_reads/{sample}.bam"
+    output:
+        "outputs/sorted_reads/{sample}.bam.bai"
+    shell:
+        "samtools index {input}"

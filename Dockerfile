@@ -1,5 +1,5 @@
 # Use the Miniconda base image
-FROM continuumio/miniconda3:latest
+FROM continuumio/miniconda3:22.11.1
 
 # Update the package list and install necessary packages using apt-get
 # Note: I'm running a mac M1 and these packages do not seem to be available
@@ -15,6 +15,7 @@ WORKDIR /snakemake_project
 
 # Copy the environment.yml file to the container
 COPY environment.yml .
+COPY requirements.txt .
 
 # Create the Conda environment
 RUN conda env create -f environment.yml
