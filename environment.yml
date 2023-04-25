@@ -1,0 +1,16 @@
+name:
+  snakemake-tutorial
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - python=3.10
+  - gatk4==4.3.0.0
+  - samtools==1.16.1
+  - picard==2.27.5
+  - snakemake
+  - jinja2
+  - matplotlib
+  - graphviz
+  - pygments
+  - tabulate=0.8.10
